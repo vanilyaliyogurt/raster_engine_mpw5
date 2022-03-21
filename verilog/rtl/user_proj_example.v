@@ -85,12 +85,22 @@ module user_proj_example #(
 	wire [`MPRJ_IO_PADS-1:0] unused_io_in = io_in;
 	wire [127:0]             unused_la_data_in = la_data_in;
 	wire [127:0]             unused_la_oenb = la_oenb;
+	
   
     // IRQ
     assign irq = 3'b000;// Unused
 
     // LA 
-    assign la_data_out = 128'd0;
+    assign la_data_out[37:0] = io_out[37:0];
+	assign la_data_out[38] = wb_clk_i;
+	assign la_data_out[39] = wb_rst_i;
+	assign la_data_out[40] = wbs_stb_i;
+	assign la_data_out[41] = wbs_we_i;
+	assign la_data_out[42 +: 4] = wbs_sel_i;
+	assign la_data_out[46 +: 32] = wbs_dat_i;
+	assign la_data_out[78 +: 32] = wbs_adr_i;
+	assign la_data_out[110] = wbs_ack_o;
+	assign la_data_out[127:111] = wbs_dat_o[16:0];
 	
 	wire [17:0] vram_raster_address;
 	wire [15:0] vram_raster_color;
