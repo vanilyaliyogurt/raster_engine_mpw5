@@ -46,7 +46,7 @@ set ::env(CLOCK_PORT) "wb_clk_i"
 set ::env(CLOCK_PERIOD) "33"
 
 set ::env(FP_SIZING) absolute
-set ::env(DIE_AREA) "0 0 1900 1800"
+set ::env(DIE_AREA) "0 0 1800 1800"
 
 set ::env(FP_PIN_ORDER_CFG) $script_dir/pin_order.cfg
 
@@ -80,6 +80,13 @@ set ::env(GLB_RESIZER_TIMING_OPTIMIZATIONS) 0
 set ::env(GLB_RESIZER_HOLD_MAX_BUFFER_PERCENT) 65
 set ::env(GLB_RT_OVERFLOW_ITERS) 70
 set ::env(GLB_RESIZER_HOLD_SLACK_MARGIN) 0.8
+
+set ::env(DECAP_CELL) "\
+	sky130_fd_sc_hd__decap_3 \
+	sky130_fd_sc_hd__decap_4 \
+	sky130_fd_sc_hd__decap_6 \
+	sky130_fd_sc_hd__decap_8 \
+	sky130_ef_sc_hd__decap_12"
 
 
 set ::env(DRT_OPT_ITERS) 110
